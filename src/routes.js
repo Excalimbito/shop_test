@@ -3,12 +3,12 @@ import { Switch, Route } from 'react-router-dom';
 
 import {
   Cart,
-  MainApp
+  Dashboard
 } from './containers';
 
 const rootRoutes = () => (
   <Switch>
-    <Route path="/" exact component={MainApp}/>
+    <Route path="/" exact component={Dashboard}/>
     <Route path="/cart" exact component={Cart}/>
   </Switch>
 )

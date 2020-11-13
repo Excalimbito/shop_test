@@ -1,7 +1,7 @@
-import MainApp from './MainApp';
+import Dashboard from './Dashboard';
 import Cart from './Cart';
 
 export {
-  MainApp,
+  Dashboard,
   Cart
 }
