@@ -1,15 +1,16 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from './store'
-import './App.css';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
-  return (
+import store from './store';
+import Routes from './routes';
+
+const AppRoot = () => (
     <Provider store={store}>
-      <div className="App">
-        PROJ INIT
-      </div>
+      <BrowserRouter>
+        <Routes/>
+      </BrowserRouter>
     </Provider>
-  );
-}
-export default App;
+)
+
+export default AppRoot
