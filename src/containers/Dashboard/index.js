@@ -8,11 +8,11 @@ class MainApp extends Component {
     return (
       <Grid container spacing={2}>
         <Grid item>
-          Cart
+          Dashboard
         </Grid>
         <Grid item>
-          <Link to="/">
-            Go To MainApp
+          <Link to="/cart">
+            Go To Cart
           </Link>
         </Grid>
       </Grid>
