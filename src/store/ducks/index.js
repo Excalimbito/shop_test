@@ -5,14 +5,22 @@ import cart, {
   Types as CartTypes
 } from './cart';
 
+import products, {
+  Actions as ProductsActions,
+  Types as ProductsTypes
+} from './products';
+
 export default combineReducers({
-  cart
+  cart,
+  products
 })
 
 export {
-  CartActions
+  CartActions,
+  ProductsActions
 }
 
 export {
-  CartTypes
+  CartTypes,
+  ProductsTypes
 }
