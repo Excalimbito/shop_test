@@ -1,21 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Grid } from '@material-ui/core';
+import { ProductList } from '../../components';
 
 class MainApp extends Component {
-  render()
-  {
+  render() {
     return (
-      <Grid container spacing={2}>
-        <Grid item>
-          Dashboard
-        </Grid>
-        <Grid item>
-          <Link to="/cart">
-            Go To Cart
-          </Link>
-        </Grid>
-      </Grid>
+      <ProductList products={[1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]} />
     )
   }
 }
