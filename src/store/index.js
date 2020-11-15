@@ -14,4 +14,4 @@ const reduxStore = createStore(
 
 export default reduxStore;
 
-//sagaMiddleware.run(rootSagas)
+sagaMiddleware.run(rootSagas)

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import { AddShoppingCart } from '@material-ui/icons';
 
 import { ProductList } from '../'
 import {
@@ -9,6 +11,7 @@ import {
   AddCartBtn
 } from './style';
 
+import { CartActions } from '../../store/ducks';
 import { api } from '../../services';
 
 const productsAPI = api("products");
@@ -57,6 +60,7 @@ class ProductPage extends Component {
   }
 
   render() {
+    const { addNewProduct } = this.props;
     const {
       loading,
       product,
@@ -76,11 +80,11 @@ class ProductPage extends Component {
                   <Typography className='mainInfoTxt' variant='h6'>
                     {product.title}
                   </Typography>
-                  <AddCartBtn>
+                  <AddCartBtn onClick={() => addNewProduct(product)}>
                     <Typography className='mainInfoTxt' variant='h4'>
                       R${product.price.toFixed(2)}
                     </Typography>
-                    <AddShoppingCartIcon/>
+                    <AddShoppingCart/>
                   </AddCartBtn>
                 </div>
               </div>
@@ -99,4 +103,8 @@ class ProductPage extends Component {
   }
 }
 
-export default ProductPage;
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(CartActions, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(ProductPage);
