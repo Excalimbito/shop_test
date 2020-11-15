@@ -9,23 +9,21 @@ import {
 
 const ProductList = props => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <ListContainer>
-        <Grid container spacing={2} xs={12}>
-          {props.products.map((prod, indx) => (
-            <Grid item xs={4}>
-              <ProductLink to="/cart">
-                <img src={prod.image}/>
-                {prod.title}
-              </ProductLink>
-              <PriceContainer>
-                R${prod.price.toFixed(2)}
-              </PriceContainer>
-            </Grid>
-          ))}
-        </Grid>
-      </ListContainer >
-    </div >
+    <ListContainer>
+      <Grid container spacing={2}>
+        {props.products.map(prod => (
+          <Grid item xs={4} key={`Product${prod.id}`}>
+            <ProductLink to={`/product/${prod.category}/${prod.id}`}>
+              <img src={prod.image} />
+              {prod.title}
+            </ProductLink>
+            <PriceContainer>
+              R${prod.price.toFixed(2)}
+            </PriceContainer>
+          </Grid>
+        ))}
+      </Grid>
+    </ListContainer >
   )
 }
 
