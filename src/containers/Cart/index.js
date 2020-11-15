@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Grid } from '@material-ui/core';
+import { connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import CartPage from '../../components/CartPage';
 
 class MainApp extends Component {
   render()
   {
+    const { cartState } = this.props;
+
     return (
-      <Grid container spacing={2}>
-        <Grid item>
-          Cart
-        </Grid>
-        <Grid item>
-          <Link to="/">
-            Go To MainApp
-          </Link>
-        </Grid>
-      </Grid>
+      <CartPage products={cartState.products}/>
     )
   }
 }
 
-export default MainApp
+const mapStateToProps = store => ({
+  cartState: store.cart
+})
+
+export default connect(mapStateToProps)(MainApp);
