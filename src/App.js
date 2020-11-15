@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import {
-  RootHeader
-} from './style';
+import { AppHeader } from './components';
 
 import store from './store';
 import Routes from './routes';
-import { Typography } from '@material-ui/core';
 
 class AppRoot extends Component {
   render() {
@@ -16,13 +13,7 @@ class AppRoot extends Component {
       <Provider store={store}>
         <div>
           <BrowserRouter>
-            <RootHeader>
-              <Link style={{ textDecoration: 'none', color: "black" }} to='/'>
-                <Typography variant='h5'>
-                  NoLaVa!
-                </Typography>
-              </Link>
-            </RootHeader>
+            <AppHeader/>
             <Routes />
           </BrowserRouter>
         </div>
