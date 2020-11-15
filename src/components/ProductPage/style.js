@@ -4,10 +4,16 @@ import { Button } from '@material-ui/core';
 const PageContainer = styled.div`
   max-width: 650px;
   width: 100vw;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 1px solid  #f9813a;
+  border-radius: 7px;
 `
 const InfoContainer = styled.div`
   padding: 15px;
-  border-bottom: 3px solid #f9813a;
+  border-bottom: 1px solid #f9813a;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
 
   & > div {
     display: flex;
