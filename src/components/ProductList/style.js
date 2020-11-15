@@ -11,6 +11,7 @@ const ProductLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: black;
   background-color: white !important;
   border: 3px solid #1d91fd !important;
   border-top-left-radius: 7px;
