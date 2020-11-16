@@ -8,13 +8,13 @@ import {
 } from './containers';
 
 const rootRoutes = () => (
-  <Switch>
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <Switch>
       <Route path="/" exact component={Dashboard} />
       <Route path="/cart" exact component={Cart} />
       <Route path="/product/:category/:prodID" component={Product} />
-    </div>
-  </Switch>
+    </Switch>
+  </div>
 )
 
 export default rootRoutes
