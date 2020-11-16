@@ -17,6 +17,58 @@ function* addProductToCart(payload) {
   })
 }
 
+function* removeProduct(payload) {
+  let { products } = yield select(store => store.cart);
+
+  products = products.filter(prod => prod.product.id !== payload.productID)
+
+  yield put({
+    type: CartTypes.REMOVE_PRODUCT_SAGA,
+    products
+  })
+}
+
+function* addQuantity(payload) {
+  const { products } = yield select(store => store.cart);
+
+  products.some(prod => {
+    if(prod.product.id === payload.productID)
+    {
+      prod.quantity++
+      return true
+    }
+
+    return null
+  })
+
+  yield put({
+    type: CartTypes.ADD_QUANTITY_SAGA,
+    products
+  })
+}
+
+function* removeQuantity(payload) {
+  const { products } = yield select(store => store.cart);
+
+  products.some(prod => {
+    if(prod.product.id === payload.productID)
+    {
+      prod.quantity--
+      return true
+    }
+    
+    return null
+  })
+
+  yield put({
+    type: CartTypes.REMOVE_QUANTITY_SAGA,
+    products
+  })
+}
+
 export {
-  addProductToCart
+  addProductToCart,
+  addQuantity,
+  removeQuantity,
+  removeProduct
 }
