@@ -3,13 +3,21 @@ import { put, select } from 'redux-saga/effects';
 import { CartTypes } from '../ducks';
 
 function* addProductToCart(payload) {
-  const { products } = yield select(store => store.cart);
-  const cartProd = {
-    quantity: 1,
-    product: payload.newProduct
-  }
+  let { products } = yield select(store => store.cart);
 
-  products.push(cartProd)
+  const prodArrayIndx = products.findIndex(prod => prod.product.id === payload.newProduct.id)
+
+  if (prodArrayIndx >= 0) {
+    products[prodArrayIndx].quantity++
+  }
+  else {
+    const cartProd = {
+      quantity: 1,
+      product: payload.newProduct
+    }
+  
+    products.push(cartProd)
+  }
 
   yield put({
     type: CartTypes.ADD_PRODUCT_SAGA,
@@ -32,8 +40,7 @@ function* addQuantity(payload) {
   const { products } = yield select(store => store.cart);
 
   products.some(prod => {
-    if(prod.product.id === payload.productID)
-    {
+    if (prod.product.id === payload.productID) {
       prod.quantity++
       return true
     }
@@ -51,12 +58,11 @@ function* removeQuantity(payload) {
   const { products } = yield select(store => store.cart);
 
   products.some(prod => {
-    if(prod.product.id === payload.productID)
-    {
+    if (prod.product.id === payload.productID) {
       prod.quantity--
       return true
     }
-    
+
     return null
   })
 
