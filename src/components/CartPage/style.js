@@ -30,12 +30,31 @@ const ProdItem = styled.div`
     max-height: 100%;
   }
 
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
   .prodName {
     font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+`
+const PriceContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .iconBtn{
+    background-color: #1d91fd
   }
 `
 
 export {
   PageContainer,
-  ProdItem
+  ProdItem,
+  PriceContainer
 }

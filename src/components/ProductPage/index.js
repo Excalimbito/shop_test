@@ -33,7 +33,8 @@ class ProductPage extends Component {
     const { prodID } = this.props.match.params;
 
     if (prevProps.match.params.prodID !== prodID) {
-      this.props.history.go(0)
+      this.setState({ loading: true })
+      this.getInfoProducts()
     }
   }
 
@@ -68,32 +69,31 @@ class ProductPage extends Component {
     } = this.state;
 
     return (
+      !loading &&
       <PageContainer>
-        {!loading &&
-          <InfoContainer>
+        <InfoContainer>
+          <div>
             <div>
-              <div>
-                <img className='prodImg' src={product.image} />
-              </div>
-              <div>
-                <div className='mainInfoContainer'>
-                  <Typography className='mainInfoTxt' variant='h6'>
-                    {product.title}
+              <img className='prodImg' src={product.image} />
+            </div>
+            <div>
+              <div className='mainInfoContainer'>
+                <Typography className='mainInfoTxt' variant='h6'>
+                  {product.title}
+                </Typography>
+                <AddCartBtn onClick={() => addNewProduct(product)}>
+                  <Typography className='mainInfoTxt' variant='h4'>
+                    R${product.price.toFixed(2)}
                   </Typography>
-                  <AddCartBtn onClick={() => addNewProduct(product)}>
-                    <Typography className='mainInfoTxt' variant='h4'>
-                      R${product.price.toFixed(2)}
-                    </Typography>
-                    <AddShoppingCart/>
-                  </AddCartBtn>
-                </div>
+                  <AddShoppingCart />
+                </AddCartBtn>
               </div>
             </div>
-            <Typography>
-              {product.description}
-            </Typography>
-          </InfoContainer>
-        }
+          </div>
+          <Typography>
+            {product.description}
+          </Typography>
+        </InfoContainer>
         <Typography variant='h6'>
           Mais produtos dessa categoria:
         </Typography>
