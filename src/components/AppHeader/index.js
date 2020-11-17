@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Typography,
-  IconButton
+  IconButton,
+  Badge
 } from '@material-ui/core';
 import { AddShoppingCart, Search } from '@material-ui/icons';
 
@@ -30,7 +31,9 @@ const AppHeader = (props) => (
       </SearchContainer>
       <Link style={{ textDecoration: 'none', color: "black" }} to='/cart'>
         <IconButton>
-          <AddShoppingCart />
+          <Badge badgeContent={props.cartQuantity} color='primary'>
+            <AddShoppingCart />
+          </Badge>
         </IconButton>
       </Link>
     </div>

@@ -5,14 +5,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 
 import store from './store'
+
+const muiTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#1d91fd'
+    }
+  }
+})
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <ThemeProvider theme={muiTheme}>
+          <App />
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

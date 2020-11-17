@@ -48,6 +48,7 @@ class AppRoot extends Component {
   }
 
   render() {
+    const { cartState } = this.props;
     const { searchTxt } = this.state;
 
     return (
@@ -56,15 +57,24 @@ class AppRoot extends Component {
           searchTxt={searchTxt}
           onSearchInputChange={this.onSearchInputChange}
           onSearch={this.onSearch}
-          resetSearch={this.resetSearch}/>
+          resetSearch={this.resetSearch}
+          cartQuantity={cartState.products.length > 0 
+            ? cartState.products.map(prod => prod.quantity).reduce((total, quant) => total + quant)
+            : 0
+          }
+          />
         <Routes />
       </div>
     )
   }
 }
 
+const mapStateToProps = store => ({
+  cartState: store.cart
+})
+
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(ProductsActions, dispatch)
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(AppRoot));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppRoot));
