@@ -10,26 +10,36 @@ import { api } from '../../services';
 const productsAPI = api("products");
 
 class MainApp extends Component {
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
 
     this.getAllProducts = this.getAllProducts.bind(this);
   }
 
-  componentDidMount()
-  {
-    this.getAllProducts()
+  componentDidUpdate(prevProps) {
+    const prevPropsResetDash = prevProps.productsState.resetDashboard;
+    const propsResetDash = this.props.productsState.resetDashboard;
+
+    if (prevPropsResetDash !== propsResetDash) {
+      this.getAllProducts()
+    }
   }
 
-  getAllProducts()
-  {
+  componentDidMount() {
+    const { productsState } = this.props;
+
+    if (productsState.products.length <= 0) {
+      this.getAllProducts()
+    }
+  }
+
+  getAllProducts() {
     const { setProductList } = this.props;
 
     productsAPI.get()
-    .then(res => {
-      setProductList(res.data)
-    })
+      .then(res => {
+        setProductList(res.data)
+      })
   }
 
   render() {
