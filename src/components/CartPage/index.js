@@ -22,8 +22,8 @@ const CartPage = (props) => {
       <Typography className='listHeader' variant='h5'>
         Meu Carrinho:
       </Typography>
-      {props.products.map(prod => (
-        <ProdItem>
+      {props.products.map((prod, indx) => (
+        <ProdItem key={`CartProd${indx}`}>
           <img src={prod.product.image} />
           <Typography variant='subtitle1' className='prodName'>
             {prod.product.title}
