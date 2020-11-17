@@ -32,16 +32,15 @@ class AppRoot extends Component {
       const { setProductList, searchProduct, history } = this.props;
 
       setProductList([])
-      searchProduct(this.state.searchTxt)
-      history.push('/')
+      searchProduct(this.state.searchTxt, history)
     }
   }
 
   resetSearch() {
     const { setProductList, refreshDashboard } = this.props;
 
-    refreshDashboard()
     setProductList([])
+    refreshDashboard()
     this.setState({
       searchTxt: ''
     })

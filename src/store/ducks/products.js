@@ -36,10 +36,11 @@ export const Actions = {
     }
   },
 
-  searchProduct: searchString => {
+  searchProduct: (searchString, pageHist) => {
     return {
       type: Types.SEARCH_PRODUCT,
-      searchString
+      searchString,
+      pageHist
     }
   },
 
