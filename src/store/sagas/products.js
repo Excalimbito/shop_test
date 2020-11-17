@@ -17,12 +17,12 @@ function* searchProducts(payload) {
     return null
   })
 
-  payload.pageHist.push('/')
-
   yield put({
     type: ProductsTypes.SEARCH_PRODUCT_SAGA,
     filtredProducts
   })
+
+  payload.pageHist.push('/')
 }
 
 export {

@@ -9,7 +9,7 @@ import {
 
 const ProductList = props => {
   return (
-    <ListContainer>
+    <ListContainer style={props.style}>
       <Grid container spacing={2}>
         {props.products.map(prod => (
           <Grid item xs={4} key={`Product${prod.id}`}>

@@ -94,10 +94,10 @@ class ProductPage extends Component {
             {product.description}
           </Typography>
         </InfoContainer>
-        <Typography variant='h6'>
+        <Typography variant='h6' style={{marginLeft: '15px'}}>
           Mais produtos dessa categoria:
         </Typography>
-        <ProductList products={categoryList} />
+        <ProductList products={categoryList} style={{maxWidth: '610px'}}/>
       </PageContainer>
     )
   }
