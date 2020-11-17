@@ -4,23 +4,30 @@ import {
   Typography,
   IconButton
 } from '@material-ui/core';
-import { AddShoppingCart } from '@material-ui/icons';
+import { AddShoppingCart, Search } from '@material-ui/icons';
 
 import {
-  RootHeader, SearchBar
+  RootHeader, SearchBar, SearchContainer
 } from './style';
 
 const AppHeader = (props) => (
   <RootHeader>
     <div>
-      <Link style={{ textDecoration: 'none', color: "black" }} to='/'>
+      <Link style={{ textDecoration: 'none', color: "black" }} to='/' onClick={props.resetSearch}>
         <Typography variant='h5'>
           NoLaVa!
         </Typography>
       </Link>
-      <SearchBar placeholder='Pesquisar produtos'>
-
-      </SearchBar>
+      <SearchContainer>
+        <SearchBar
+          placeholder='Buscar produtos'
+          onKeyDown={({ key }) => props.onSearch(key)}
+          onChange={({ currentTarget }) => props.onSearchInputChange(currentTarget.value)}
+          value={props.searchTxt}/>
+        <IconButton onClick={() => props.onSearch("Enter")}>
+          <Search />
+        </IconButton>
+      </SearchContainer>
       <Link style={{ textDecoration: 'none', color: "black" }} to='/cart'>
         <IconButton>
           <AddShoppingCart />

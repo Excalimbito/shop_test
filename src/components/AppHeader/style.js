@@ -18,15 +18,21 @@ const RootHeader = styled.div`
     height: 100%;
   }
 `
-const SearchBar = styled(InputBase)`
+const SearchContainer = styled.div`
   background-color: #FFFFFF44;
-  width: 50%;
   border-radius: 5px;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+const SearchBar = styled(InputBase)`
   padding: 5px;
   padding-left: 10px;
 `
 
 export {
   RootHeader,
+  SearchContainer,
   SearchBar
 }
