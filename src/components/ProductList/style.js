@@ -5,7 +5,7 @@ const ListContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 15px;
-  width: 100vw;
+  width: 100%;
   max-width: 650px;
 `
 const ProductLink = styled(Link)`
